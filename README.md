@@ -46,7 +46,7 @@
 | 31/10/2018 | RW Primitives (2/2) | Report #3 (~11.18.)
 | 05/11/2018 | No class | Supplementary class<br>(12/11/2018 and 14/11/2018)
 | 07/11/2018 | No class | Supplementary class<br>(03/12/2018 and 05/12/2018)
-| 12/11/2018 | <a href='https://github.com/jaeseolee/IS571-ACSP-Fall-2018/raw/master/lec09/09-Return-Oriented Programming.pdf'>Control Flow Hijacking/ROP</a> | - 14:00\~15:45<br>Calling Conventions<br>Intel® 64 and IA-32 Architectures
+| 12/11/2018 | <a href='https://github.com/jaeseolee/IS571-ACSP-Fall-2018/raw/master/lec09/09-Return-Oriented Programming.pdf'>Control Flow Hijacking<br>Return-Oriented Programming</a> | - 14:00\~15:45<br>Calling Conventions<br>Intel® 64 and IA-32 Architectures
 | 14/11/2018 | <a href='https://github.com/jaeseolee/IS571-ACSP-Fall-2018/raw/master/lec10/10-Shellcode.pdf'>Shellcode</a> | - 14:00\~15:45
 | 19/11/2018 | macOS Architecture | Mac OS X and IOS Internals: To the Apple's Core
 | 21/11/2018 | macOS March-O and Dynamic Linker
