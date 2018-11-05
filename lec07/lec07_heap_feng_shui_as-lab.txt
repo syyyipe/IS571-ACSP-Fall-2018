@@ -7,13 +7,13 @@
 
 2. <MSIE> Open Main.swf using Internet Explorer
 
-	---------------------------
-	Message from webpage
-	---------------------------
-	Let's debug the Flash Player
-	---------------------------
-	OK   
-	---------------------------
+    ---------------------------
+    Message from webpage
+    ---------------------------
+    Let's debug the Flash Player
+    ---------------------------
+    OK   
+    ---------------------------
 
 3. <Windbg> Tracking the Vector.<Number> objects
 
@@ -298,10 +298,10 @@
 
     /* ******* ACTIONSCRIPT Codes ******* */
     
-	    var pattern:String = "(?i)()()(?-i)||||||||||||||||||||||";
-	    var regexp:RegExp = new RegExp(pattern, "")
+        var pattern:String = "(?i)()()(?-i)||||||||||||||||||||||";
+        var regexp:RegExp = new RegExp(pattern, "")
 
-	    objHeaps[999][0] = 33333333; // break
+        objHeaps[999][0] = 33333333; // break
     
     /* ******* End of Codes ******* */
 

