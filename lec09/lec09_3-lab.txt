@@ -1,0 +1,91 @@
+
+1. Summary
+    !address /f:image,page_execute_read
+    s 61530000 62649000 94 c3
+    .foreach (${hit} {s -[1]b 61530000 62649000 94}) { .foreach (${subhit} {s -[1]b ${hit} L?3 c3}) { .echo "--------"; u ${hit} ${subhit}; } }
+
+2. Finding Gadgets using Windbg
+    0:007> !address /f:image
+
+      BaseAddr EndAddr+1 RgnSize     Type       State                 Protect             Usage
+    -----------------------------------------------------------------------------------------------
+     1210000  1211000     1000 MEM_IMAGE   MEM_COMMIT  PAGE_READONLY                      Image      [iexplore; "C:\Program Files\Internet Explorer\iexplore.exe"]
+     1211000  1216000     5000 MEM_IMAGE   MEM_COMMIT  PAGE_EXECUTE_READ                  Image      [iexplore; "C:\Program Files\Internet Explorer\iexplore.exe"]
+     1216000  1217000     1000 MEM_IMAGE   MEM_COMMIT  PAGE_READWRITE                     Image      [iexplore; "C:\Program Files\Internet Explorer\iexplore.exe"]
+     1217000  1218000     1000 MEM_IMAGE   MEM_COMMIT  PAGE_READONLY                      Image      [iexplore; "C:\Program Files\Internet Explorer\iexplore.exe"]
+     1218000  1219000     1000 MEM_IMAGE   MEM_COMMIT  PAGE_READWRITE                     Image      [iexplore; "C:\Program Files\Internet Explorer\iexplore.exe"]
+     1219000  12d8000    bf000 MEM_IMAGE   MEM_COMMIT  PAGE_READONLY                      Image      [iexplore; "C:\Program Files\Internet Explorer\iexplore.exe"]
+    61530000 61531000     1000 MEM_IMAGE   MEM_COMMIT  PAGE_READONLY                      Image      [Flash32_15_0_0_167; "C:\Windows\system32\Macromed\Flash\Flash32_15_0_0_167.ocx"]
+    61531000 62085000   b54000 MEM_IMAGE   MEM_COMMIT  PAGE_EXECUTE_READ                  Image      [Flash32_15_0_0_167; "C:\Windows\system32\Macromed\Flash\Flash32_15_0_0_167.ocx"]
+    62085000 623a4000   31f000 MEM_IMAGE   MEM_COMMIT  PAGE_READONLY                      Image      [Flash32_15_0_0_167; "C:\Windows\system32\Macromed\Flash\Flash32_15_0_0_167.ocx"]
+    623a4000 623af000     b000 MEM_IMAGE   MEM_COMMIT  PAGE_WRITECOPY                     Image      [Flash32_15_0_0_167; "C:\Windows\system32\Macromed\Flash\Flash32_15_0_0_167.ocx"]
+    623af000 623b0000     1000 MEM_IMAGE   MEM_COMMIT  PAGE_READWRITE                     Image      [Flash32_15_0_0_167; "C:\Windows\system32\Macromed\Flash\Flash32_15_0_0_167.ocx"]
+    623b0000 623b1000     1000 MEM_IMAGE   MEM_COMMIT  PAGE_WRITECOPY                     Image      [Flash32_15_0_0_167; "C:\Windows\system32\Macromed\Flash\Flash32_15_0_0_167.ocx"]
+    623b1000 623b4000     3000 MEM_IMAGE   MEM_COMMIT  PAGE_READWRITE                     Image      [Flash32_15_0_0_167; "C:\Windows\system32\Macromed\Flash\Flash32_15_0_0_167.ocx"]
+    623b4000 62440000    8c000 MEM_IMAGE   MEM_COMMIT  PAGE_WRITECOPY                     Image      [Flash32_15_0_0_167; "C:\Windows\system32\Macromed\Flash\Flash32_15_0_0_167.ocx"]
+    62440000 62441000     1000 MEM_IMAGE   MEM_COMMIT  PAGE_READWRITE                     Image      [Flash32_15_0_0_167; "C:\Windows\system32\Macromed\Flash\Flash32_15_0_0_167.ocx"]
+    62441000 6244b000     a000 MEM_IMAGE   MEM_COMMIT  PAGE_WRITECOPY                     Image      [Flash32_15_0_0_167; "C:\Windows\system32\Macromed\Flash\Flash32_15_0_0_167.ocx"]
+    6244b000 6244d000     2000 MEM_IMAGE   MEM_COMMIT  PAGE_READWRITE                     Image      [Flash32_15_0_0_167; "C:\Windows\system32\Macromed\Flash\Flash32_15_0_0_167.ocx"]
+    6244d000 62468000    1b000 MEM_IMAGE   MEM_COMMIT  PAGE_WRITECOPY                     Image      [Flash32_15_0_0_167; "C:\Windows\system32\Macromed\Flash\Flash32_15_0_0_167.ocx"]
+    62468000 6246a000     2000 MEM_IMAGE   MEM_COMMIT  PAGE_READWRITE                     Image      [Flash32_15_0_0_167; "C:\Windows\system32\Macromed\Flash\Flash32_15_0_0_167.ocx"]
+    6246a000 6246c000     2000 MEM_IMAGE   MEM_COMMIT  PAGE_WRITECOPY                     Image      [Flash32_15_0_0_167; "C:\Windows\system32\Macromed\Flash\Flash32_15_0_0_167.ocx"]
+    6246c000 62563000    f7000 MEM_IMAGE   MEM_COMMIT  PAGE_READWRITE                     Image      [Flash32_15_0_0_167; "C:\Windows\system32\Macromed\Flash\Flash32_15_0_0_167.ocx"]
+    62563000 62649000    e6000 MEM_IMAGE   MEM_COMMIT  PAGE_READONLY                      Image      [Flash32_15_0_0_167; 
+    ...
+
+    0:007> s 61531000 62085000 94 c3
+    615505bb  94 c3 84 db 75 04 3c 2c-75 2d c6 06 00 51 8b 4d  ....u.<,u-...Q.M
+    6155e5b1  94 c3 e8 44 6c 00 00 59-8a c3 5b c3 8b 44 24 04  ...Dl..Y..[..D$.
+    615a5127  94 c3 84 db 0f 84 69 01-00 00 8b 46 04 8b 40 04  ......i....F..@.
+    615b63c5  94 c3 08 62 b9 00 f0 ff-ff 85 c0 79 2f c1 e8 08  ...b.......y/...
+    615b642f  94 c3 08 62 85 c0 79 34-56 c1 e8 08 57 25 ff ff  ...b..y4V...W%..
+    ...
+    61f88585  94 c3 69 ed f5 4a 1c 50-69 db f4 4a 1c 50 03 dd  ..i..J.Pi..J.P..
+    61fd9e18  94 c3 34 62 53 e8 6e 5c-f8 ff 83 c4 10 85 c0 0f  ..4bS.n\........
+    62012ea3  94 c3 5e 8b c3 5b c3 8b-54 24 18 89 57 1c 5f 5e  ..^..[..T$..W._^
+    
+    0:007> u 62012ea3  
+    Flash32_15_0_0_167!AdobeCPGetAPI+0x2d5393:
+    62012ea3 94              xchg    eax,esp
+    62012ea4 c3              ret
+    62012ea5 5e              pop     esi
+    62012ea6 8bc3            mov     eax,ebx
+    62012ea8 5b              pop     ebx
+    62012ea9 c3              ret
+    62012eaa 8b542418        mov     edx,dword ptr [esp+18h]
+    62012eae 89571c          mov     dword ptr [edi+1Ch],edx
+    
+    0:007> .foreach (${hit} {s -[1]b 61530000 62649000 94}) { .foreach (${subhit} {s -[1]b ${hit} L?3 c3}) { .echo "--------"; u ${hit} ${subhit} } }
+    Flash32_15_0_0_167+0x205bb:
+    615505bb 94              xchg    eax,esp
+    615505bc c3              ret
+    Flash32_15_0_0_167+0x2df4b:
+    6155df4b 94              xchg    eax,esp
+    6155df4c c0c38b          rol     bl,8Bh
+    Flash32_15_0_0_167+0x2e5b1:
+    6155e5b1 94              xchg    eax,esp
+    6155e5b2 c3              ret
+    Flash32_15_0_0_167+0x3e2c1:
+    6156e2c1 94              xchg    eax,esp
+    6156e2c2 c0c333          rol     bl,33h
+    Flash32_15_0_0_167+0x60490:
+    61590490 94              xchg    eax,esp
+    61590491 c0c356          rol     bl,56h
+    Flash32_15_0_0_167+0x61a12:
+    61591a12 94              xchg    eax,esp
+    61591a13 c0c351          rol     bl,51h
+    Flash32_15_0_0_167+0x6dfa6:
+    6159dfa6 94              xchg    eax,esp
+    6159dfa7 c0c355          rol     bl,55h
+    Flash32_15_0_0_167+0x7420e:
+    615a420e 94              xchg    eax,esp
+    615a420f c0c355          rol     bl,55h
+    Flash32_15_0_0_167+0x75127:
+    615a5127 94              xchg    eax,esp
+    615a5128 c3              ret
+    Flash32_15_0_0_167+0x863c5:
+    615b63c5 94              xchg    eax,esp
+    615b63c6 c3              ret
+    Flash32_15_0_0_167+0x8642f:
+    615b642f 94              xchg    eax,esp
+    615b6430 c3              ret

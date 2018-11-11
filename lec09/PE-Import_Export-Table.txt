@@ -1,0 +1,13 @@
+# Import Table
+as f_ind 0n8
+as m_ind 0n1
+as m iexplore
+da ${m} + poi(${m} + poi(${m} + poi(${m} + 3c) + 80) + 14 * ${m_ind} + c)
+da ${m} + poi(${m} + poi(${m} + poi(${m} + poi(${m} + 3c) + 80) + 14 * ${m_ind}) + 4 * ${f_ind})
+u poi(${m} + poi(${m} + poi(${m} + poi(${m} + 3c) + 80) + 14 * ${m_ind} + 10) + 4 * ${f_ind})
+
+# Export Table
+as f_ind 0n100
+as m kernel32
+da ${m} + poi(${m} + poi(${m} + poi(${m} + poi(${m} + 3c) + 78) + 20) + 4 * ${f_ind});
+.foreach /pS1 (${on} {dw ${m} + poi(${m} + poi(${m} + poi(${m} + 3c) + 78) + 24) + 4 * ${f_ind} L1}){ u ${m} + poi(${m} + poi(${m} + poi(${m} + poi(${m} + 3c) + 78) + 1c) + 4 * (${on} / 2 + 1)) };
