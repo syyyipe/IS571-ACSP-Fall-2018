@@ -51,7 +51,7 @@
 | 19/11/2018 | macOS Architecture | Mac OS X and IOS Internals: To the Apple's Core
 | 21/11/2018 | macOS March-O and Dynamic Linker
 | 26/11/2018 | macOS Process Internals, Memory Mgmt.,<br> and Objective-C
-| 28/11/2018 | macOS LaunchD, Mach, and Sandbox
+| 28/11/2018 | No class
 | 03/12/2018 | <a href='https://github.com/jaeseolee/IS571-ACSP-Fall-2018/raw/master/lec12/12-Project.pdf'>Project Presentation</a> (1/2) | - 14:00\~14:25<br>\- 14:25\~14:50<br>\- 14:50\~15:15<br>\- 15:15\~15:40<br>(25 minutes/team)
 | 05/12/2018 | Project Presentation (2/2) | \- 14:00\~14:25<br>\- 14:25\~14:50<br>\- 14:50\~15:15<br>\- 15:15\~15:40
 | 10/12/2018 | No class (Final week)
@@ -66,7 +66,7 @@
 | 4 | 20174323, 20183543, 20185438 | CVE-2015-0311 | Flash |
 | 5 | 20183410, 20183669 | CVE-2016-0189 | Internet Explorer |
 | 6 | 20183237, 20184276 | CVE-2016-3210 | Internet Explorer |
-| 7 | 20183170, 20145347 | CVE-2016-7200, 7201 | Edge |
+| 7 | 20183170, 20145347 | CVE-2016-7189 | Edge |
 | 8 | 20183421, 20185403 | Bug-Number: 716044  | Chrome |
 
 Copyright 2017 Jaeseo Lee
