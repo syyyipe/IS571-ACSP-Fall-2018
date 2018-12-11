@@ -57,16 +57,4 @@
 | 10/12/2018 | No class (Final week)
 | 12/12/2018 | No class (Final week)
 
-### Project Teams
-| Team   | Members                      | CVEs                | Notes   |
-|--------|------------------------------|---------------------|---------|
-| 1 | 20185327, 20183165 | CVE-2017-8548 | Edge, 7
-| 2 | 20183355, 20183218 | Bug-Number: 789393 | Chrome, 3
-| 3 | 20185115, 20183300 | Bug-Number: 789393 | Chrome, 8
-| 4 | 20174323, 20183543, 20185438 | CVE-2015-0311 | Flash, 5
-| 5 | 20183410, 20183669 | CVE-2016-0189 | Internet Explorer, 1
-| 6 | 20183237, 20184276 | CVE-2016-3210 | Internet Explorer, 2
-| 7 | 20183170, 20145347 | <del>CVE-2016-7200</del>, CVE-2016-7189,<br>CVE-2016-7201 | Edge, 4
-| 8 | 20183421, 20185403 | Bug-Number: 716044  | Chrome, 6
-
 Copyright 2017 Jaeseo Lee
